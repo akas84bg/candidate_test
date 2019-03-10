@@ -1,0 +1,26 @@
+{
+  "name": "theferrer/bingo",
+  "license": "MIT",
+  "type": "project",
+  "description": "Bingo Kata",
+  "require": {
+    "php": "^7.3"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8"
+  },
+  "scripts": {
+    "phpunit": "phpunit",
+    "test": ["@phpunit"]
+  },
+  "autoload": {
+    "psr-4": {
+      "Bingo\\": ["src"]
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Bingo\\Test\\": "tests/"
+    }
+  }
+}
