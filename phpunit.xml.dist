@@ -9,7 +9,7 @@
         beStrictAboutChangesToGlobalState="true"
         beStrictAboutTestsThatDoNotTestAnything="false"
         beStrictAboutTodoAnnotatedTests="true"
-        bootstrap="./tests/bootstrap.php"
+        bootstrap="./app/bootstrap.php"
         colors="true"
         convertErrorsToExceptions="true"
         convertNoticesToExceptions="true"
