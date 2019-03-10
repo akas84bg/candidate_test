@@ -1,0 +1,10 @@
+vendor/
+
+/phpunit.xml
+
+.env
+
+build/
+.php_cs.cache
+.deptrac.cache
+.idea
