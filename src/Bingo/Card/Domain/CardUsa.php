@@ -4,6 +4,10 @@ declare(strict_types = 1);
 
 namespace Bingo\Card\Domain;
 
+use Bingo\Card\Domain\ValueObject\CardCell;
+use Bingo\Card\Domain\ValueObject\Cells;
+use Bingo\Shared\Domain\ValueObject\IntValueObject;
+
 final class CardUsa implements Card
 {
     private $columns;
@@ -37,11 +41,17 @@ final class CardUsa implements Card
     }
 
     /**
-     * @param $number
+     * @param IntValueObject $number
      */
-    public function markNumber($number)
+    public function markNumber(IntValueObject $number)
     {
-
+        foreach ($this->columns as $column) {
+            foreach ($column as $cell) {
+                if ($cell instanceof CardCell && $number->value() == $cell->value()) {
+                    $cell->mark();
+                }
+            }
+        }
     }
 
     /**
@@ -49,6 +59,52 @@ final class CardUsa implements Card
      */
     public function isFullyMarked(): bool
     {
+        foreach ($this->columns as $column) {
+            foreach ($column as $cell) {
+                if (!$cell->isMarked()) {
+                    return false;
+                }
+            }
+        }
+
         return true;
+    }
+
+    /**
+     * @return Cells
+     */
+    public function getCells(): Cells
+    {
+        $cellsArray = array();
+
+        foreach ($this->columns as $column) {
+            foreach ($column as $cell) {
+                $cellsArray[] = $cell;
+            }
+        }
+
+        $cells = new Cells($cellsArray);
+
+        return $cells;
+    }
+
+    /**
+     * @return Cells
+     */
+    public function getMarkedCells(): Cells
+    {
+        $cellsArray = array();
+
+        foreach ($this->columns as $column) {
+            foreach ($column as $cell) {
+                if (!$cell->isMarked()) {
+                    $cellsArray[] = $cell;
+                }
+            }
+        }
+
+        $cells = new Cells($cellsArray);
+
+        return $cells;
     }
 }
