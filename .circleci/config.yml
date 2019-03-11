@@ -1,0 +1,23 @@
+version: 2
+
+jobs:
+  build:
+    machine: true
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - composer_{{ checksum "composer.lock" }}
+
+      - run: make build
+      - run: make test
+      - store_test_results:
+          path: build/test_results
+      - store_artifacts:
+          path: build/test_results
+
+      - save_cache:
+          key: composer_{{ checksum "composer.lock" }}
+          paths:
+            - ~/.composer
