@@ -11,9 +11,11 @@
     <a href="https://agilekatas.co.uk/katas/Bingo-Kata">Bingo Kata</a> solution.
     
 </p>
+
 ### Application execution
 
 1. Generate dependencies and docker containers: `make build`
+2. Run bingo game: `make run-game`
 
 ### Tests execution
 
