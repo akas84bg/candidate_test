@@ -1,4 +1,4 @@
-.PHONY: all deps composer-install composer-update build test run-tests erase layer
+.PHONY: all deps composer-install composer-update build test run-tests erase layer start-game
 
 current-dir := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
@@ -21,6 +21,12 @@ build: deps start
 test:
 	@docker run --rm --interactive --tty --volume $(current-dir):/app --user $(id -u):$(id -g) \
     		gsingh1/prestissimo test
+
+game:
+	@docker exec -it bingo_kata-php make run-game
+
+run-game:
+	./app/bin/bingo
 
 start:
 	@docker-compose up -d
