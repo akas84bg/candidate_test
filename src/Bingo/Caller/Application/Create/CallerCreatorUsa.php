@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Bingo\Caller\Application\Create;
 
@@ -24,7 +24,7 @@ final class CallerCreatorUsa implements CallerCreator
             return new IntValueObject($number);
         };
 
-        $callerNumbers = new CallerNumbers(map($numberClassGenerator, range(1,75)));
+        $callerNumbers = new CallerNumbers(map($numberClassGenerator, range(1, 75)));
         $caller = new Caller($callerNumbers);
 
         return $caller;

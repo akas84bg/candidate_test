@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Bingo\Command;
 
@@ -26,7 +26,8 @@ final class GameCommand extends Command
     /**
      * GameCommand constructor.
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->nameGenerator = \Nubs\RandomNameGenerator\All::create();
         $this->cardGenerator = new CreateCardUsa();
 
@@ -38,8 +39,7 @@ final class GameCommand extends Command
         $this
             ->setName('bingo:start')
             ->setDescription('Start bingo game')
-            ->addArgument('players', InputArgument::OPTIONAL, 'How many players will play?', rand(2,5))
-        ;
+            ->addArgument('players', InputArgument::OPTIONAL, 'How many players will play?', rand(2, 5));
     }
 
     /**
