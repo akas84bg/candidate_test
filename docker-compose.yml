@@ -3,7 +3,7 @@ version: '3'
 services:
     php:
         container_name: bingo_kata-php
-        image: jorge07/alpine-php:7.3
+        build: docker-php-fpm
         restart: unless-stopped
         ports:
             - "9001:9001"
